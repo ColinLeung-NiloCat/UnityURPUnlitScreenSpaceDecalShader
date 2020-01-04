@@ -1,7 +1,7 @@
 /*
 https://github.com/ColinLeung-NiloCat/URP-UnlitScreenSpaceDecalShader/blob/master/README.md
 
-UUnity URP Unlit ScreenSpaceDecal Shader(SRP batcher compatible)
+Unity URP Unlit ScreenSpaceDecal Shader(SRP batcher compatible)
 ======================
 ![screenshot](https://imgur.com/EqsxFC9.png)
 ![screenshot](https://imgur.com/EluE9Dx.png)
