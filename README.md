@@ -1,4 +1,4 @@
-Fast Unlit Screen Space Decal Shader
+SRP batcher compatible Unlit Screen Space Decal Shader
 ======================
 ![screenshot](https://imgur.com/EluE9Dx.png)
 ![screenshot](https://imgur.com/EqsxFC9.png)
@@ -8,7 +8,9 @@ Fast Unlit Screen Space Decal Shader
 ![screenshot](https://imgur.com/WE6AqYP.png)
 ![screenshot](https://imgur.com/c3fInsS.png)
 ![screenshot](https://imgur.com/lGE6qr3.png)
-This screen space decal shader's fragment shader is optimized, no more matrix mul() inside the fragment shader
+
+This screen space decal shader is SRP batcher compatible, you can put a lot in scene without hurting CPU performance too much.
+This screen space decal shader removed all matrix mul() inside the fragment shader, you can put a lot in scene as long as they are small and don't overlap.
 
 How to use this shader:
 1. create a new material using this shader
@@ -21,7 +23,7 @@ How to use this shader:
 
 Requirement when you use this shader:
 - Forward rendering
-- _CameraDepthTexture already rendering by unity
+- _CameraDepthTexture already rendering by unity (tick DepthTexture in Universal Render Pipeline Asset)
 
 [the camera depth texture]:
     https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
@@ -40,7 +42,7 @@ https://www.slideshare.net/blindrenderer/screen-space-decals-in-warhammer-40000-
 System Requirements
 -------------------
 
-- Unity 2019.1 or later
+- Unity 2019.1 or later (due to shader_feature_local)
 
 License
 -------
