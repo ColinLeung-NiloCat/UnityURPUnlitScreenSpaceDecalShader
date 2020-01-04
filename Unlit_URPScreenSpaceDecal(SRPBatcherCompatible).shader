@@ -229,3 +229,4 @@ Shader "Unlit/URPScreenSpaceDecal(SRPBatcherCompatible)"
 		}
 	}
 }
+
