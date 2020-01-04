@@ -12,6 +12,7 @@ Unity URP UnlitScreenSpaceDecalShader(SRP batcher compatible)
 ![screenshot](https://imgur.com/5LwT7Xe.png)
 
 How to use this shader:
+-------------------
 1. create a new material using this shader
 2. assign any texture to material's Texture slot
 3. create a new unity default cube GameObject in scene (in Hierarchy window, click +/3D Object/Cube)
@@ -21,6 +22,7 @@ How to use this shader:
 7. (optional)make the cube as thin as possible to improve rendering performance
 
 Requirement when using this shader:
+-------------------
 - Forward rendering
 - Perspective camera
 - _CameraDepthTexture is already rendering by unity (toggle on DepthTexture in your Universal Render Pipeline Asset)
@@ -28,6 +30,8 @@ Requirement when using this shader:
 [the camera depth texture]:
     https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
 
+Performance:
+-------------------
 This screen space decal shader is SRP batcher compatible, so you can put lots of decals in scene without hurting CPU performance too much.
 Also this shader removed all matrix mul() inside the fragment shader, so you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
 
