@@ -1,4 +1,4 @@
-URP-UnlitScreenSpaceDecalShader(SRP batcher compatible)
+UnityURP-UnlitScreenSpaceDecalShader(SRP batcher compatible)
 ======================
 ![screenshot](https://imgur.com/EluE9Dx.png)
 ![screenshot](https://imgur.com/EqsxFC9.png)
@@ -9,9 +9,6 @@ URP-UnlitScreenSpaceDecalShader(SRP batcher compatible)
 ![screenshot](https://imgur.com/c3fInsS.png)
 ![screenshot](https://imgur.com/lGE6qr3.png)
 ![screenshot](https://imgur.com/5LwT7Xe.png)
-
-This screen space decal shader is SRP batcher compatible, you can put lots of decals in scene without hurting CPU performance too much.
-And this shader removed all matrix mul() inside the fragment shader, you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
 
 How to use this shader:
 1. create a new material using this shader
@@ -30,6 +27,9 @@ Requirement when you use this shader:
 [the camera depth texture]:
     https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
 
+This screen space decal shader is SRP batcher compatible, so you can put lots of decals in scene without hurting CPU performance too much.
+Also this shader removed all matrix mul() inside the fragment shader, so you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
+
 Reference
 -------------------
 
@@ -45,7 +45,7 @@ System Requirements
 -------------------
 
 - Unity 2019.1 or later (due to shader_feature_local)
-- #pragma target 3.0 (due to ddx & ddy)
+- #pragma target 3.0 (due to ddx() & ddy())
 
 License
 -------
