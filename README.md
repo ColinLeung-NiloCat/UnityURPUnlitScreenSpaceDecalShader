@@ -24,6 +24,7 @@ How to use this shader:
 
 Requirement when you use this shader:
 - Forward rendering
+- Perspective camera
 - _CameraDepthTexture already rendering by unity (tick DepthTexture in Universal Render Pipeline Asset)
 
 [the camera depth texture]:
