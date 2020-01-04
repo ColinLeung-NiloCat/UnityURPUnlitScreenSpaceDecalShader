@@ -22,6 +22,8 @@ Low Complexity, High Fidelity: The Rendering of INSIDE's optimized decal shader
 
 https://youtu.be/RdN06E6Xn9E?t=2153
 
+Screen Space Decals in Warhammer 40,000: Space Marine
+
 https://www.slideshare.net/blindrenderer/screen-space-decals-in-warhammer-40000-space-marine-14699854?fbclid=IwAR2X6yYeWmDiz1Ho4labx3zA3GATpC7fi5qNkzjEj-MYTOBpXnkIsnA3T-A
 
 System Requirements
