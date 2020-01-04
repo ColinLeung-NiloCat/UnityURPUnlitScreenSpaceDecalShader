@@ -1,4 +1,4 @@
-SRP batcher compatible Unlit Screen Space Decal Shader
+URP-UnlitScreenSpaceDecalShader(SRP batcher compatible)
 ======================
 ![screenshot](https://imgur.com/EluE9Dx.png)
 ![screenshot](https://imgur.com/EqsxFC9.png)
