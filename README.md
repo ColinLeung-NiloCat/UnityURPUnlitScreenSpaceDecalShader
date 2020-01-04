@@ -30,7 +30,7 @@ Requirement when using this shader:
 [the camera depth texture]:
     https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
 
-Performance:
+Performance
 -------------------
 This screen space decal shader is SRP batcher compatible, so you can put lots of decals in scene without hurting CPU performance too much.
 Also this shader removed all matrix mul() inside the fragment shader, so you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
