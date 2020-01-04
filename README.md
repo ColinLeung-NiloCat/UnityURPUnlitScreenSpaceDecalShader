@@ -13,7 +13,7 @@ Unity URP UnlitScreenSpaceDecalShader(SRP batcher compatible)
 
 How to use this shader:
 1. create a new material using this shader
-2. assign any texture in material's Texture slot
+2. assign any texture to material's Texture slot
 3. create a new unity default cube GameObject in scene (in Hierarchy window, click +/3D Object/Cube)
 4. apply material to MeshRenderer component's material slot
 5. edit the GameObject's transform so the local forward vector (blue Z arrow) is pointing to scene objects, and the cube is intersecting scene objects
