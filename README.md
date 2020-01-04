@@ -31,6 +31,12 @@ Requirement when using this shader:
 This screen space decal shader is SRP batcher compatible, so you can put lots of decals in scene without hurting CPU performance too much.
 Also this shader removed all matrix mul() inside the fragment shader, so you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
 
+System Requirements
+-------------------
+
+- Unity 2019.1 or later (due to shader_feature_local)
+- #pragma target 3.0 (due to ddx() & ddy())
+
 Reference
 -------------------
 
@@ -42,8 +48,4 @@ Screen Space Decals in Warhammer 40,000: Space Marine
 
 https://www.slideshare.net/blindrenderer/screen-space-decals-in-warhammer-40000-space-marine-14699854?fbclid=IwAR2X6yYeWmDiz1Ho4labx3zA3GATpC7fi5qNkzjEj-MYTOBpXnkIsnA3T-A
 
-System Requirements
--------------------
 
-- Unity 2019.1 or later (due to shader_feature_local)
-- #pragma target 3.0 (due to ddx() & ddy())
