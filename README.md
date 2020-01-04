@@ -1,4 +1,4 @@
-Unity URP UnlitScreenSpaceDecalShader(SRP batcher compatible)
+Unity URP Unlit ScreenSpaceDecal Shader(SRP batcher compatible)
 ======================
 ![screenshot](https://imgur.com/EqsxFC9.png)
 ![screenshot](https://imgur.com/EluE9Dx.png)
