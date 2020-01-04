@@ -10,8 +10,8 @@ URP-UnlitScreenSpaceDecalShader(SRP batcher compatible)
 ![screenshot](https://imgur.com/lGE6qr3.png)
 ![screenshot](https://imgur.com/5LwT7Xe.png)
 
-This screen space decal shader is SRP batcher compatible, you can put a lot decals in scene without hurting CPU performance too much.
-And this shader removed all matrix mul() inside the fragment shader, you can put a lot decals in scene without hurting GPU performance too much, as long as they are thin and don't overlap(overdraw).
+This screen space decal shader is SRP batcher compatible, you can put lots of decals in scene without hurting CPU performance too much.
+And this shader removed all matrix mul() inside the fragment shader, you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
 
 How to use this shader:
 1. create a new material using this shader
