@@ -1,12 +1,6 @@
-UnlitScreenSpaceDecalShader
+Unlit Screen Space Decal Shader
 ======================
-
-Implementation of Low Complexity, High Fidelity: The Rendering of INSIDE's optimized decal shader
-https://youtu.be/RdN06E6Xn9E?t=2153
-this shader's fragment shader is optimized, no matrix mul() inside the fragment shader
-
-extra references:
-https://www.slideshare.net/blindrenderer/screen-space-decals-in-warhammer-40000-space-marine-14699854?fbclid=IwAR2X6yYeWmDiz1Ho4labx3zA3GATpC7fi5qNkzjEj-MYTOBpXnkIsnA3T-A
+This screen space decal shader's fragment shader is optimized, no more matrix mul() inside the fragment shader
 
 How to use this shader:
 1. create a new material using this shader
@@ -21,6 +15,12 @@ Requirement when you use this shader:
 
 [the camera depth texture]:
     https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
+
+references:
+Low Complexity, High Fidelity: The Rendering of INSIDE's optimized decal shader
+https://youtu.be/RdN06E6Xn9E?t=2153
+
+https://www.slideshare.net/blindrenderer/screen-space-decals-in-warhammer-40000-space-marine-14699854?fbclid=IwAR2X6yYeWmDiz1Ho4labx3zA3GATpC7fi5qNkzjEj-MYTOBpXnkIsnA3T-A
 
 System Requirements
 -------------------
