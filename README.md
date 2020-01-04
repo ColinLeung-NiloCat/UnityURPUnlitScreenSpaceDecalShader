@@ -17,6 +17,7 @@ Requirement when you use this shader:
     https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
 
 references:
+
 Low Complexity, High Fidelity: The Rendering of INSIDE's optimized decal shader
 https://youtu.be/RdN06E6Xn9E?t=2153
 
