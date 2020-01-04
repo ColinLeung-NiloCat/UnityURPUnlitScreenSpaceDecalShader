@@ -17,15 +17,15 @@ How to use this shader:
 1. create a new material using this shader
 2. assign any texture in material's Texture slot
 3. create a new unity default cube GameObject in scene (in Hierarchy window, click +/3D Object/Cube)
-4. apply the new material created to MeshRenderer component's material slot
+4. apply material to MeshRenderer component's material slot
 5. edit the GameObject's transform so the local forward vector (blue Z arrow) is pointing to scene objects, and the cube is intersecting scene objects
-6. you should see decal rendering correctly
+6. you should now see decal rendering correctly
 7. (optional)make the cube as thin as possible to improve rendering performance
 
-Requirement when you use this shader:
+Requirement when using this shader:
 - Forward rendering
 - Perspective camera
-- _CameraDepthTexture already rendering by unity (tick DepthTexture in Universal Render Pipeline Asset)
+- _CameraDepthTexture is already rendering by unity (toggle on DepthTexture in your Universal Render Pipeline Asset)
 
 [the camera depth texture]:
     https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
