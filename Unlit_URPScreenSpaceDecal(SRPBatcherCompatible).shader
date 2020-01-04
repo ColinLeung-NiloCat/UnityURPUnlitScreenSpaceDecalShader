@@ -31,7 +31,7 @@ Requirement when you use this shader:
 - _CameraDepthTexture already rendering by unity (tick DepthTexture in Universal Render Pipeline Asset)
 
 [the camera depth texture]:
-	https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
+    https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
 
 Reference
 -------------------
@@ -48,7 +48,7 @@ System Requirements
 -------------------
 
 - Unity 2019.1 or later (due to shader_feature_local)
-- support ddx/ddy in shader
+- #pragma target 3.0 (due to ddx() & ddy())
 
 License
 -------
