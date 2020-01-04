@@ -10,17 +10,17 @@ SRP batcher compatible Unlit Screen Space Decal Shader
 ![screenshot](https://imgur.com/lGE6qr3.png)
 ![screenshot](https://imgur.com/5LwT7Xe.png)
 
-This screen space decal shader is SRP batcher compatible, you can put a lot in scene without hurting CPU performance too much.
-This screen space decal shader removed all matrix mul() inside the fragment shader, you can put a lot in scene as long as they are small and don't overlap.
+This screen space decal shader is SRP batcher compatible, you can put a lot decals in scene without hurting CPU performance too much.
+This screen space decal shader removed all matrix mul() inside the fragment shader, you can put a lot decals in scene as long as they are thin and don't overlap too much.
 
 How to use this shader:
 1. create a new material using this shader
 2. assign any texture in material's Texture slot
 3. create a new unity default cube GameObject in scene (in Hierarchy window, click +/3D Object/Cube)
-4. apply the material created in step(1) to step(2)'s MeshRenderer component
+4. apply the new material created to MeshRenderer component's material slot
 5. edit the GameObject's transform so the local forward vector (blue Z arrow) is pointing to scene objects, and the cube is intersecting scene objects
 6. you should see decal rendering correctly
-7. (optional)make the cube as small & thin as possible to improve rendering performance
+7. (optional)make the cube as thin as possible to improve rendering performance
 
 Requirement when you use this shader:
 - Forward rendering
