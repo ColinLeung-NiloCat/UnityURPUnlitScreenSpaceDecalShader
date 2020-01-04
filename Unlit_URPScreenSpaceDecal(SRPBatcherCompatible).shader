@@ -94,6 +94,7 @@ Shader "Unlit/URPScreenSpaceDecal(SRPBatcherCompatible)"
 		[Header(Unity Fog)]
 		[Toggle(_UnityFogEnable)] _UnityFogEnable("_UnityFogEnable", float) = 1
     }
+	
     SubShader
     {
         Tags { "RenderType"="Overlay" "Queue"="AlphaTest+1" }
