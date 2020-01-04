@@ -46,6 +46,7 @@ System Requirements
 
 - Unity 2019.1 or later (due to shader_feature_local)
 - #pragma target 3.0 (due to ddx & ddy)
+
 License
 -------
 
