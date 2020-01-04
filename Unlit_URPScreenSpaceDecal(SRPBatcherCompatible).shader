@@ -56,6 +56,7 @@ License
 Public domain
 */
 
+
 Shader "Unlit/URPScreenSpaceDecal(SRPBatcherCompatible)"
 {
     Properties
