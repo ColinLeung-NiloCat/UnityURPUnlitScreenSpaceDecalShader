@@ -4,10 +4,12 @@ This screen space decal shader's fragment shader is optimized, no more matrix mu
 
 How to use this shader:
 1. create a new material using this shader
-2. create a new unity default cube GameObject in scene (in Hierarchy window, click +/3D Object/Cube)
-3. apply the material created in step(1) to step(2)'s MeshRenderer component
-4. edit the GameObject's transform so the local forward vector (blue Z arrow) is pointing to scene objects, and the cube is intersecting scene objects
-5. you should see decal rendering correctly
+2. assign any texture in material's Texture slot
+3. create a new unity default cube GameObject in scene (in Hierarchy window, click +/3D Object/Cube)
+4. apply the material created in step(1) to step(2)'s MeshRenderer component
+5. edit the GameObject's transform so the local forward vector (blue Z arrow) is pointing to scene objects, and the cube is intersecting scene objects
+6. you should see decal rendering correctly
+7. (optional)make the cube as small & thin as possible to improve rendering performance
 
 Requirement when you use this shader:
 - Forward rendering
