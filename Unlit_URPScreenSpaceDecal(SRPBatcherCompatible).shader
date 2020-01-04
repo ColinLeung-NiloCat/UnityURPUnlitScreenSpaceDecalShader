@@ -58,10 +58,10 @@ Public domain
 
 Shader "Unlit/URPScreenSpaceDecal(SRPBatcherCompatible)"
 {
-    Properties
-    {
-        _MainTex ("Texture", 2D) = "white" {}
-		[HDR]_Color ("_Color", color) = (1,1,1,1)
+	Properties
+	{
+		_MainTex("Texture", 2D) = "white" {}
+		[HDR]_Color("_Color", color) = (1,1,1,1)
 
 		[Header(Blending option)]
 		//https://docs.unity3d.com/ScriptReference/Rendering.BlendMode.html
@@ -76,7 +76,7 @@ Shader "Unlit/URPScreenSpaceDecal(SRPBatcherCompatible)"
 		[Header(ZTest)]
 		//https://docs.unity3d.com/ScriptReference/Rendering.CompareFunction.html
 		//default = disable = make sure decal render correctly even if camera go inside decal cube, although this default value will prevent EarlyZ
-		[Enum(UnityEngine.Rendering.CompareFunction)]_ZTest("_ZTest (optimization: Set to LessEqual if camera never go inside cube volume, else set to Disable)", Float) = 0 
+		[Enum(UnityEngine.Rendering.CompareFunction)]_ZTest("_ZTest (optimization: Set to LessEqual if camera never go inside cube volume, else set to Disable)", Float) = 0
 
 		[Header(Cull)]
 		//https://docs.unity3d.com/ScriptReference/Rendering.CullMode.html
@@ -87,34 +87,36 @@ Shader "Unlit/URPScreenSpaceDecal(SRPBatcherCompatible)"
 		_AlphaRemap("_AlphaRemap(first mul x, then add y)(zw unused)", vector) = (1,0,0,0)
 		[Toggle]_MulAlphaToRGB("_MulAlphaToRGB", Float) = 0
 
-		[Header(Compare projection dir with scene normal and Discard if needed )]
+		[Header(Compare projection dir with scene normal and Discard if needed)]
 		[Toggle(_ProjectionAngleDiscardEnable)] _ProjectionAngleDiscardEnable("_ProjectionAngleDiscardEnable", float) = 1
 		_ProjectionAngleDiscardThreshold("_ProjectionAngleDiscardThreshold", range(-1,1)) = 0
 
 		[Header(Unity Fog)]
 		[Toggle(_UnityFogEnable)] _UnityFogEnable("_UnityFogEnable", float) = 1
-    }
-    SubShader
-    {
-        Tags { "RenderType"="Overlay" "Queue"="AlphaTest+1" }
+	}
 
-        Pass
-        {
+	SubShader
+	{
+		Tags { "RenderType" = "Overlay" "Queue" = "AlphaTest+1" }
+
+		Pass
+		{
 			Stencil
 			{
-				Ref [_StencilRef]
-				Comp [_StencilComp]
+				Ref[_StencilRef]
+				Comp[_StencilComp]
 			}
-			
-			Cull [_Cull]
-			ZTest [_ZTest]
+
+			Cull[_Cull]
+			ZTest[_ZTest]
 
 			ZWrite off
 			Blend[_SrcBlend][_DstBlend]
 
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+			CGPROGRAM
+			#pragma vertex vert
+			#pragma fragment frag
+
 			// make fog work
 			#pragma multi_compile_fog
 
@@ -126,21 +128,21 @@ Shader "Unlit/URPScreenSpaceDecal(SRPBatcherCompatible)"
 
 			#include "UnityCG.cginc"
 
-            struct appdata
-            {
-                float4 vertex : POSITION;
-            };
+			struct appdata
+			{
+				float4 vertex : POSITION;
+			};
 
-            struct v2f
-            {
-                float4 vertex : SV_POSITION;
+			struct v2f
+			{
+				float4 vertex : SV_POSITION;
 #if _UnityFogEnable
 				UNITY_FOG_COORDS(1)
 #endif
 				float4 screenUV : TEXCOORD0;
 				float4 viewRayOS : TEXCOORD2;
 				float3 cameraPosOS : TEXCOORD3;
-            };
+			};
 
 			CBUFFER_START(UnityPerMaterial)
 				sampler2D _MainTex;
@@ -153,10 +155,10 @@ Shader "Unlit/URPScreenSpaceDecal(SRPBatcherCompatible)"
 
 			sampler2D _CameraDepthTexture;
 
-            v2f vert (appdata v)
-            {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
+			v2f vert(appdata v)
+			{
+				v2f o;
+				o.vertex = UnityObjectToClipPos(v.vertex);
 #if _UnityFogEnable
 				UNITY_TRANSFER_FOG(o, o.vertex);
 #endif
@@ -180,11 +182,11 @@ Shader "Unlit/URPScreenSpaceDecal(SRPBatcherCompatible)"
 				o.viewRayOS.xyz = mul((float3x3)ViewToObjectMatrix, viewRay);
 				o.cameraPosOS = mul(ViewToObjectMatrix, float4(0,0,0,1)).xyz;
 
-                return o;
-            }
+				return o;
+			}
 
-            half4 frag (v2f i) : SV_Target
-            {
+			half4 frag(v2f i) : SV_Target
+			{
 				//***WARNING***: now do viewRay z division that we skipped in vertex shader.
 				i.viewRayOS /= i.viewRayOS.w;
 
@@ -211,8 +213,8 @@ Shader "Unlit/URPScreenSpaceDecal(SRPBatcherCompatible)"
 				clip(mask - 0.5);//if ZWrite is off, clip() is fast enough in mobile, because it wont affect DepthBuffer, so no pipeline stall.
 				//===================================================
 
-                // sample the decal texture
-                half4 col = tex2D(_MainTex, decalSpaceUV.xy) * _Color;
+				// sample the decal texture
+				half4 col = tex2D(_MainTex, decalSpaceUV.xy) * _Color;
 				col.a = col.a * _AlphaRemap.x + _AlphaRemap.y;//alpha remap MAD
 				col.rgb *= lerp(1, col.a, _MulAlphaToRGB);
 
@@ -221,9 +223,9 @@ Shader "Unlit/URPScreenSpaceDecal(SRPBatcherCompatible)"
 				UNITY_APPLY_FOG(i.fogCoord, col);
 #endif
 
-                return col;
-            }
-            ENDCG
-        }
-    }
+				return col;
+			}
+			ENDCG
+		}
+	}
 }
