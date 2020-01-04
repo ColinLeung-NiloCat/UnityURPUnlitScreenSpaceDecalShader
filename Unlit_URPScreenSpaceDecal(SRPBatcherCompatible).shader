@@ -217,7 +217,7 @@ Shader "Unlit/URPScreenSpaceDecal(SRPBatcherCompatible)"
 
                 // sample the decal texture
                 half4 col = tex2D(_MainTex, decalSpaceUV.xy) * _Color;
-                col.a = col.a * _AlphaRemap.x + _AlphaRemap.y;//alpha remap MAD
+                col.a = saturate(col.a * _AlphaRemap.x + _AlphaRemap.y);//alpha remap MAD
                 col.rgb *= lerp(1, col.a, _MulAlphaToRGB);
 
 #if _UnityFogEnable
