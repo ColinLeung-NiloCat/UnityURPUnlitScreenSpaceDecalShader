@@ -5,16 +5,21 @@ Before adding decal
 
 After adding decal(multiply blend mode)
 ![screenshot](https://i.imgur.com/ptjzwPK.png)
+each decal is just a unity cube GameObject, using material of this shader.
 ![screenshot](https://i.imgur.com/m4F0N5t.png)
 
 Before adding decal
 ![screenshot](https://imgur.com/ZWIzkdR.png)
 After adding decal
+(alpha blending)
 ![screenshot](https://imgur.com/EqsxFC9.png)
+(additive)
 ![screenshot](https://imgur.com/EluE9Dx.png)
+(multiply)
 ![screenshot](https://imgur.com/P2tJqKs.png)
+(alpha blending)
 ![screenshot](https://imgur.com/xIjdKvW.png)
-
+(opaque)
 ![screenshot](https://imgur.com/WE6AqYP.png)
 ![screenshot](https://imgur.com/c3fInsS.png)
 ![screenshot](https://imgur.com/lGE6qr3.png)
