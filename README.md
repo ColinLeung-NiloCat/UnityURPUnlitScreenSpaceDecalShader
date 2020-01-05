@@ -82,8 +82,8 @@ Also this shader moved all matrix mul() inside the fragment shader to vertex sha
 I need LOTs of decal in my game, are there performance best practice?
 -------------------
 - make all decal cube as thin/small as possible
-- don't overlap decals(over draw)
-- Set ZTest to LessEqual, and Cull to Back, if your camera never goes into decal's cube volume, this will improve GPU performance a lot!
+- don't overlap decals(overdraw)
+- Set ZTest to LessEqual, and Cull to Back in material inspector, if your camera never goes into decal's cube volume, doing this will improve GPU performance a lot!
 
 Editor System Requirements
 -------------------
