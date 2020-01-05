@@ -79,11 +79,11 @@ This screen space decal shader is SRP batcher compatible, so you can put lots of
 
 Also this shader moved all matrix mul() inside the fragment shader to vertex shader, so you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
 
-How to optimize?
+I need LOTs of decal in my game, are there performance best practice?
 -------------------
--make all decal cube as thin/small as possible
--don't overlap decals
--Set ZTest to LessEqual, and Cull to Back, if your camera never goes into decal's cube volume, this will improve GPU performance a lot!
+- make all decal cube as thin/small as possible
+- don't overlap decals(over draw)
+- Set ZTest to LessEqual, and Cull to Back, if your camera never goes into decal's cube volume, this will improve GPU performance a lot!
 
 Editor System Requirements
 -------------------
