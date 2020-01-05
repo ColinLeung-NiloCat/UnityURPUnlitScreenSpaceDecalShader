@@ -40,7 +40,7 @@ How to use this shader in my project?
 1. create a new material using that shader
 2. assign any texture to material's Texture slot
 3. create a new unity default cube GameObject in scene (in Hierarchy window, click +/3D Object/Cube)
-4. apply material to MeshRenderer component's material slot
+4. apply that material to Cube Gameobject's MeshRenderer component's material slot
 5. edit the GameObject's transform so the local forward vector (blue Z arrow) is pointing to scene objects, and the cube is intersecting scene objects
 6. you should now see decal is rendering correctly(projecting to scene objects correctly)
 7. (optional)edit blend mode / color, according to your needs
