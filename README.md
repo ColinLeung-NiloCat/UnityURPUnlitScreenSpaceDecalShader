@@ -64,7 +64,7 @@ https://docs.unity3d.com/Manual/SL-Blend.html
 
 Requirement when using this shader
 -------------------
-- Forward rendering
+- Forward rendering (only tested on URP, it may work in built-in RP)
 - Perspective camera
 - _CameraDepthTexture is already rendering by unity (toggle on DepthTexture in your Universal Render Pipeline Asset)
 - For mobile, you need atleast OpenGLES3.0 (#pragma target 3.0 due to ddx() & ddy())
@@ -79,7 +79,7 @@ I need LOTs of decal in my game, are there performance best practice?
 -------------------
 - make all decal cube as thin/small as possible
 - don't overlap decals(overdraw)
-- Set ZTest to LessEqual, and Cull to Back in material inspector, if your camera never goes into decal's cube volume, doing this will improve GPU performance a lot!
+- Set ZTest to LessEqual, and Cull to Back in material inspector, if your camera never goes into decal's cube volume, doing this will improve GPU performance a lot! (due to effective early-Z, GPU only need to render visible decals)
 
 Editor System Requirements
 -------------------
