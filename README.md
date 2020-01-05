@@ -30,7 +30,11 @@ After adding decal:
 (additive, blue tint)
 ![screenshot](https://imgur.com/5LwT7Xe.png)
 
-How to use this shader in your project
+When I should use this shader?
+-------------------
+0. clone the shader to your project
+
+How to use this shader in my project?
 -------------------
 0. clone the shader to your project
 1. create a new material using that shader
@@ -42,7 +46,7 @@ How to use this shader in your project
 7. (optional)edit blend mode / color, according to your needs
 8. (optional)finally make the cube as thin/small as possible to improve GPU rendering performance
 
-Which blend mode should I use?
+Which blend mode should I use in material inspector?
 -------------------
 Blend SrcAlpha OneMinusSrcAlpha // Traditional transparency
 Blend One OneMinusSrcAlpha // Premultiplied transparency
@@ -60,16 +64,17 @@ Requirement when using this shader
 
 [the camera depth texture]:
     https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
+- #pragma target 3.0 (= atleast OpenGLES3.0) (due to ddx() & ddy())
 
-Performance
+Is this shader optimized for mobile?
 -------------------
 This screen space decal shader is SRP batcher compatible, so you can put lots of decals in scene without hurting CPU performance too much(even all decals use different material).
 Also this shader moved all matrix mul() inside the fragment shader to vertex shader, so you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
 
 System Requirements
 -------------------
-- Unity 2019.1 or later (due to "shader_feature_local"), you can replace to "shader_feature" if you want to use this shader in older unity versions
-- #pragma target 3.0 (due to ddx() & ddy())
+- Unity 2019.1 or later (due to "shader_feature_local"). But you can replace to "shader_feature" if you want to use this shader in older unity versions
+
 
 Implementation Reference
 -------------------
