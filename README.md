@@ -35,6 +35,16 @@ How to use this shader:
 6. you should now see decal rendering correctly
 7. (optional)make the cube as thin as possible to improve rendering performance
 
+Which blend mode should I use?
+-------------------
+Blend SrcAlpha OneMinusSrcAlpha // Traditional transparency
+Blend One OneMinusSrcAlpha // Premultiplied transparency
+Blend One One // Additive
+Blend OneMinusDstColor One // Soft Additive
+Blend DstColor Zero // Multiplicative
+Blend DstColor SrcColor // 2x Multiplicative
+https://docs.unity3d.com/Manual/SL-Blend.html
+
 Requirement when using this shader:
 -------------------
 - Forward rendering
