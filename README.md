@@ -67,19 +67,19 @@ Requirement when using this shader
 - Forward rendering (only tested on URP, it may work in built-in RP)
 - Perspective camera
 - _CameraDepthTexture is already rendering by unity (toggle on DepthTexture in your Universal Render Pipeline Asset)
-- For mobile, you need atleast OpenGLES3.0 (#pragma target 3.0 due to ddx() & ddy())
+- For mobile, you need at least OpenGLES3.0 (#pragma target 3.0 due to ddx() & ddy())
 
 Is this shader optimized for mobile?
 -------------------
 This screen space decal shader is SRP batcher compatible, so you can put lots of decals in scene without hurting CPU performance too much(even all decals use different materials).
 
-Also this shader moved all matrix mul() inside the fragment shader to vertex shader, so you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
+Also, this shader moved all matrix mul() inside the fragment shader to vertex shader, so you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
 
-I need LOTs of decal in my game, are there performance best practice?
+I need LOTs of decals in my game, is there performance best practice?
 -------------------
 - make all decal cube as thin/small as possible
 - don't overlap decals(overdraw)
-- Set ZTest to LessEqual, and Cull to Back in material inspector, if your camera never goes into decal's cube volume, doing this will improve GPU performance a lot! (due to effective early-Z, GPU only need to render visible decals)
+- Set ZTest to LessEqual, and Cull to Back in the material inspector, if your camera never goes into decal's cube volume, doing this will improve GPU performance a lot! (due to effective early-Z, GPU only need to render visible decals)
 
 Editor System Requirements
 -------------------
