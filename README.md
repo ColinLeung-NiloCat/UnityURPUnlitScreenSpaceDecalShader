@@ -2,6 +2,7 @@ Unity URP Unlit ScreenSpaceDecal Shader(SRP batcher compatible)
 ======================
 Before adding decal
 ![screenshot](https://i.imgur.com/dyFj5h1.png)
+
 After adding decal(multiply blend mode)
 ![screenshot](https://i.imgur.com/ptjzwPK.png)
 ![screenshot](https://i.imgur.com/m4F0N5t.png)
