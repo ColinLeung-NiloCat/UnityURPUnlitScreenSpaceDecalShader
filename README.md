@@ -30,9 +30,9 @@ After adding decal:
 (additive, blue tint)
 ![screenshot](https://imgur.com/5LwT7Xe.png)
 
-When I should use this shader?
+When should I use this shader?
 -------------------
-0. clone the shader to your project
+if you need to render bullet holes, dirt/logo on wall, 3D projected UI, explosion dirt mark, blood splat,  projected texture fake shadow(blob shadow) ..... and the receiver surface is not flat(can't use a flat transparent quad to finish the job), try using this shader.
 
 How to use this shader in my project?
 -------------------
@@ -46,7 +46,7 @@ How to use this shader in my project?
 7. (optional)edit blend mode / color, according to your needs
 8. (optional)finally make the cube as thin/small as possible to improve GPU rendering performance
 
-Which blend mode should I use in material inspector?
+I created the material already, but which BlendMode should I use in the material inspector?
 -------------------
 Blend SrcAlpha OneMinusSrcAlpha // Traditional transparency
 Blend One OneMinusSrcAlpha // Premultiplied transparency
@@ -63,15 +63,16 @@ Requirement when using this shader
 - _CameraDepthTexture is already rendering by unity (toggle on DepthTexture in your Universal Render Pipeline Asset)
 
 [the camera depth texture]:
-    https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
-- #pragma target 3.0 (= atleast OpenGLES3.0) (due to ddx() & ddy())
+https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
+
+- atleast OpenGLES3.0 (#pragma target 3.0 due to ddx() & ddy())
 
 Is this shader optimized for mobile?
 -------------------
 This screen space decal shader is SRP batcher compatible, so you can put lots of decals in scene without hurting CPU performance too much(even all decals use different material).
 Also this shader moved all matrix mul() inside the fragment shader to vertex shader, so you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
 
-System Requirements
+Editor System Requirements
 -------------------
 - Unity 2019.1 or later (due to "shader_feature_local"). But you can replace to "shader_feature" if you want to use this shader in older unity versions
 
