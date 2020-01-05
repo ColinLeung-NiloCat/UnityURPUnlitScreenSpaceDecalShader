@@ -27,7 +27,6 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
         [Header(Ignore texture wrap mode setting)]
         [Toggle(_FracUVEnable)] _FracUVEnable("_FracUVEnable (default = off)", Float) = 0
 
-
         //====================================== below = usually can ignore in normal use case =====================================================================
         [Header(Stencil Masking)]
         //https://docs.unity3d.com/ScriptReference/Rendering.CompareFunction.html
@@ -43,8 +42,6 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
         //https://docs.unity3d.com/ScriptReference/Rendering.CullMode.html
         //default need to be Front, because we need to make sure decal render correctly even if camera goes into decal cube
         [Enum(UnityEngine.Rendering.CullMode)]_Cull("_Cull (default = Front) _____to improve GPU performance, Set to Back if camera never goes into cube volume, else set to Front", Float) = 1 //1 = Front
-
-
 
         [Header(Unity Fog)]
         [Toggle(_UnityFogEnable)] _UnityFogEnable("_UnityFogEnable (default = on)", Float) = 1
