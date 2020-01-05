@@ -11,7 +11,8 @@ each decal is just a unity cube GameObject, using material of this shader, nothi
 
 Before adding decal
 ![screenshot](https://imgur.com/ZWIzkdR.png)
-After adding decal
+After adding decal:
+
 (alpha blending)
 ![screenshot](https://imgur.com/EqsxFC9.png)
 (additive)
