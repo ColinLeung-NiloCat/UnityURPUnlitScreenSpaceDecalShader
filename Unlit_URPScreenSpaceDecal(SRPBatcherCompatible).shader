@@ -1,5 +1,5 @@
 //see README here: 
-//https://github.com/ColinLeung-NiloCat/UnityURPUnlitScreenSpaceDecalShader#unity-urp-unlit-screenspacedecal-shadersrp-batcher-compatible
+//github.com/ColinLeung-NiloCat/UnityURPUnlitScreenSpaceDecalShader
 
 Shader "Unlit/URPScreenSpaceDecal(SRPBatcherCompatible)"
 {
