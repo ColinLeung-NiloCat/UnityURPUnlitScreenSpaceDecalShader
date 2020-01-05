@@ -67,10 +67,6 @@ Requirement when using this shader
 - Forward rendering
 - Perspective camera
 - _CameraDepthTexture is already rendering by unity (toggle on DepthTexture in your Universal Render Pipeline Asset)
-
-[the camera depth texture]:
-https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
-
 - For mobile, you need atleast OpenGLES3.0 (#pragma target 3.0 due to ddx() & ddy())
 
 Is this shader optimized for mobile?
