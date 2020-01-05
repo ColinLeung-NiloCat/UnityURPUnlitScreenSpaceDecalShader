@@ -1,6 +1,12 @@
 Unity URP Unlit ScreenSpaceDecal Shader(SRP batcher compatible)
 ======================
 Before adding decal
+![screenshot](https://i.imgur.com/E77sKyD.png)
+
+After adding decal
+![screenshot](https://i.imgur.com/jYRTqpR.png)
+
+Before adding decal
 ![screenshot](https://i.imgur.com/dyFj5h1.png)
 
 After adding decal(multiply blend mode)
@@ -40,9 +46,6 @@ After adding decal:
 ![screenshot](https://i.imgur.com/wmaM748.png)
 (add 4x4 tiling , alpha * 10 - 9)
 ![screenshot](https://i.imgur.com/k4ily3Y.png)
-
-(close up)
-![screenshot](https://i.imgur.com/jYRTqpR.png)
 
 When should I use this shader?
 -------------------
