@@ -19,7 +19,7 @@ After adding decal:
 ![screenshot](https://imgur.com/EluE9Dx.png)
 (multiply)
 ![screenshot](https://imgur.com/P2tJqKs.png)
-(alpha blending, tint to HDR red)
+(alpha blending, tint to HDR red, extra multiply alpha to rgb in shader)
 ![screenshot](https://imgur.com/xIjdKvW.png)
 (opaque)
 ![screenshot](https://imgur.com/c3fInsS.png)
@@ -27,7 +27,7 @@ After adding decal:
 ![screenshot](https://imgur.com/WE6AqYP.png)
 (multiply)
 ![screenshot](https://imgur.com/lGE6qr3.png)
-(additive)
+(additive, blue tint)
 ![screenshot](https://imgur.com/5LwT7Xe.png)
 
 How to use this shader:
