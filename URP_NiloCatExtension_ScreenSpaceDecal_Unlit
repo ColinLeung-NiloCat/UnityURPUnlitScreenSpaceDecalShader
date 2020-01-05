@@ -5,30 +5,30 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
 {
     Properties
     {
-		[Header(Basic)]
+        [Header(Basic)]
         _MainTex("Texture", 2D) = "white" {}
-		[HDR]_Color("_Color (default = 1,1,1,1)", color) = (1,1,1,1)
+        [HDR]_Color("_Color (default = 1,1,1,1)", color) = (1,1,1,1)
 
-		[Header(Blending)]
-		//https://docs.unity3d.com/ScriptReference/Rendering.BlendMode.html
-		[Enum(UnityEngine.Rendering.BlendMode)]_SrcBlend("_SrcBlend (default = SrcAlpha)", Float) = 5 //5 = SrcAlpha
-		[Enum(UnityEngine.Rendering.BlendMode)]_DstBlend("_DstBlend (default = OneMinusSrcAlpha)", Float) = 10 //10 = OneMinusSrcAlpha
+        [Header(Blending)]
+        //https://docs.unity3d.com/ScriptReference/Rendering.BlendMode.html
+        [Enum(UnityEngine.Rendering.BlendMode)]_SrcBlend("_SrcBlend (default = SrcAlpha)", Float) = 5 //5 = SrcAlpha
+        [Enum(UnityEngine.Rendering.BlendMode)]_DstBlend("_DstBlend (default = OneMinusSrcAlpha)", Float) = 10 //10 = OneMinusSrcAlpha
 
-		[Header(Alpha remap(extra alpha control))]
-		_AlphaRemap("_AlphaRemap (default = 1,0,0,0) _____alpha will first mul x, then add y    (zw unused)", vector) = (1,0,0,0)
+        [Header(Alpha remap(extra alpha control))]
+        _AlphaRemap("_AlphaRemap (default = 1,0,0,0) _____alpha will first mul x, then add y    (zw unused)", vector) = (1,0,0,0)
 
-		[Header(Prevent Side Stretching(Compare projection direction with scene normal and Discard if needed))]
-		[Toggle(_ProjectionAngleDiscardEnable)] _ProjectionAngleDiscardEnable("_ProjectionAngleDiscardEnable (default = on)", float) = 1
-		_ProjectionAngleDiscardThreshold("_ProjectionAngleDiscardThreshold (default = 0)", range(-1,1)) = 0
+        [Header(Prevent Side Stretching(Compare projection direction with scene normal and Discard if needed))]
+        [Toggle(_ProjectionAngleDiscardEnable)] _ProjectionAngleDiscardEnable("_ProjectionAngleDiscardEnable (default = on)", float) = 1
+        _ProjectionAngleDiscardThreshold("_ProjectionAngleDiscardThreshold (default = 0)", range(-1,1)) = 0
 
-		[Header(Mul alpha to rgb)]
-		[Toggle]_MulAlphaToRGB("_MulAlphaToRGB (default = off)", Float) = 0
+        [Header(Mul alpha to rgb)]
+        [Toggle]_MulAlphaToRGB("_MulAlphaToRGB (default = off)", Float) = 0
 
-		[Header(Ignore texture wrap mode setting)]
-		[Toggle(_FracUVEnable)] _FracUVEnable("_FracUVEnable (default = off)", Float) = 0
+        [Header(Ignore texture wrap mode setting)]
+        [Toggle(_FracUVEnable)] _FracUVEnable("_FracUVEnable (default = off)", Float) = 0
 
 
-		//====================================== below = usually can ignore in normal use case =====================================================================
+        //====================================== below = usually can ignore in normal use case =====================================================================
         [Header(Stencil Masking)]
         //https://docs.unity3d.com/ScriptReference/Rendering.CompareFunction.html
         _StencilRef("_StencilRef", Float) = 0
@@ -80,7 +80,7 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
 
             #pragma shader_feature_local _ProjectionAngleDiscardEnable
             #pragma shader_feature_local _UnityFogEnable
-			#pragma shader_feature_local _FracUVEnable
+            #pragma shader_feature_local _FracUVEnable
 
             #include "UnityCG.cginc"
 
@@ -115,10 +115,10 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
             {
                 v2f o;
 
-				//regular MVP
+                //regular MVP
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
-				//regular unity fog
+                //regular unity fog
 #if _UnityFogEnable
                 UNITY_TRANSFER_FOG(o, o.vertex);
 #endif
@@ -130,12 +130,12 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
                 float3 viewRay = UnityObjectToViewPos(v.vertex);
 
                 //***WARNING***
-				//=========================================================
-				//"viewRay z division" must do in the fragment shader, not vertex shader! (due to rasteriazation varying interpolation's perspective correction)
+                //=========================================================
+                //"viewRay z division" must do in the fragment shader, not vertex shader! (due to rasteriazation varying interpolation's perspective correction)
                 //We skip the "viewRay z division" in vertex shader for now, and pass the division value to varying o.viewRayOS.w first, we will do the division later when we enter fragment shader
                 //viewRay /= viewRay.z; //skip the "viewRay z division" in vertex shader for now
                 o.viewRayOS.w = viewRay.z;//pass the division value to varying o.viewRayOS.w
-				//=========================================================
+                //=========================================================
 
                 viewRay *= -1; //unity's camera space is right hand coord(negativeZ pointing into screen), we want positive z ray in fragment shader, so negate it
 
@@ -152,15 +152,15 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
             half4 frag(v2f i) : SV_Target
             {
                 //***WARNING***
-				//=========================================================
-				//now do "viewRay z division" that we skipped in vertex shader earlier.
+                //=========================================================
+                //now do "viewRay z division" that we skipped in vertex shader earlier.
                 i.viewRayOS /= i.viewRayOS.w;
-				//=========================================================
+                //=========================================================
 
                 float sceneCameraSpaceDepth = LinearEyeDepth(tex2Dproj(_CameraDepthTexture, i.screenUV));
 
-				//scene depth in any space = rayStartPos + rayDir * rayLength
-				//here all data in ObjectSpace(OS) or DecalSpace
+                //scene depth in any space = rayStartPos + rayDir * rayLength
+                //here all data in ObjectSpace(OS) or DecalSpace
                 float3 decalSpaceScenePos = i.cameraPosOS + i.viewRayOS * sceneCameraSpaceDepth;
 
                 //convert unity cube's [-0.5,0.5] vertex pos range to [0,1] uv. Only works if you use unity cube in mesh filter!
@@ -183,12 +183,12 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
                 //===================================================
 
                 // sample the decal texture
-				float2 uv = decalSpaceUV.xy * _MainTex_ST.xy + _MainTex_ST.zw;//Texture tiling & offset
+                float2 uv = decalSpaceUV.xy * _MainTex_ST.xy + _MainTex_ST.zw;//Texture tiling & offset
 #if _FracUVEnable
-				uv = frac(uv);//add frac to ignore texture wrap setting
+                uv = frac(uv);//add frac to ignore texture wrap setting
 #endif
-				half4 col = tex2D(_MainTex, uv);
-				col *= _Color;//tint color
+                half4 col = tex2D(_MainTex, uv);
+                col *= _Color;//tint color
                 col.a = saturate(col.a * _AlphaRemap.x + _AlphaRemap.y);//alpha remap MAD
                 col.rgb *= lerp(1, col.a, _MulAlphaToRGB);//extra multiply alpha to RGB
 
