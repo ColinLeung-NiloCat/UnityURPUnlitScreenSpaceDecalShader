@@ -24,7 +24,9 @@ After adding decal:
 (opaque)
 ![screenshot](https://imgur.com/c3fInsS.png)
 ![screenshot](https://imgur.com/WE6AqYP.png)
+(multiply)
 ![screenshot](https://imgur.com/lGE6qr3.png)
+(additive)
 ![screenshot](https://imgur.com/5LwT7Xe.png)
 
 How to use this shader:
