@@ -30,15 +30,17 @@ After adding decal:
 (additive, blue tint)
 ![screenshot](https://imgur.com/5LwT7Xe.png)
 
-How to use this shader:
+How to use this shader in your project
 -------------------
-1. create a new material using this shader
+0. clone the shader to your project
+1. create a new material using that shader
 2. assign any texture to material's Texture slot
 3. create a new unity default cube GameObject in scene (in Hierarchy window, click +/3D Object/Cube)
 4. apply material to MeshRenderer component's material slot
 5. edit the GameObject's transform so the local forward vector (blue Z arrow) is pointing to scene objects, and the cube is intersecting scene objects
-6. you should now see decal rendering correctly
-7. (optional)make the cube as thin as possible to improve rendering performance
+6. you should now see decal is rendering correctly(projecting to scene objects correctly)
+7. (optional)edit blend mode / color, according to your needs
+8. (optional)finally make the cube as thin/small as possible to improve GPU rendering performance
 
 Which blend mode should I use?
 -------------------
@@ -50,7 +52,7 @@ Blend DstColor Zero // Multiplicative
 Blend DstColor SrcColor // 2x Multiplicative
 https://docs.unity3d.com/Manual/SL-Blend.html
 
-Requirement when using this shader:
+Requirement when using this shader
 -------------------
 - Forward rendering
 - Perspective camera
@@ -61,18 +63,16 @@ Requirement when using this shader:
 
 Performance
 -------------------
-This screen space decal shader is SRP batcher compatible, so you can put lots of decals in scene without hurting CPU performance too much.
-Also this shader removed all matrix mul() inside the fragment shader, so you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
+This screen space decal shader is SRP batcher compatible, so you can put lots of decals in scene without hurting CPU performance too much(even all decals use different material).
+Also this shader moved all matrix mul() inside the fragment shader to vertex shader, so you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
 
 System Requirements
 -------------------
-
-- Unity 2019.1 or later (due to shader_feature_local)
+- Unity 2019.1 or later (due to "shader_feature_local"), you can replace to "shader_feature" if you want to use this shader in older unity versions
 - #pragma target 3.0 (due to ddx() & ddy())
 
-Reference
+Implementation Reference
 -------------------
-
 Low Complexity, High Fidelity: The Rendering of INSIDE's optimized decal shader
 
 https://youtu.be/RdN06E6Xn9E?t=2153
