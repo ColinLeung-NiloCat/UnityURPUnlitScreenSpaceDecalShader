@@ -41,6 +41,9 @@ After adding decal:
 (add 4x4 tiling , alpha * 10 - 9)
 ![screenshot](https://i.imgur.com/k4ily3Y.png)
 
+(close up)
+![screenshot](https://i.imgur.com/jYRTqpR.png)
+
 When should I use this shader?
 -------------------
 if you need to render bullet holes, dirt/logo on wall, 3D projected UI, explosion dirt mark, blood splat,  projected texture fake shadow(blob shadow) ..... and the receiver surface is not flat(can't use a flat transparent quad to finish the job), try using this shader.
