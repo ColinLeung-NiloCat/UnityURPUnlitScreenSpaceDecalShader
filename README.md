@@ -75,7 +75,8 @@ https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
 
 Is this shader optimized for mobile?
 -------------------
-This screen space decal shader is SRP batcher compatible, so you can put lots of decals in scene without hurting CPU performance too much. (even all decals use different materials)
+This screen space decal shader is SRP batcher compatible, so you can put lots of decals in scene without hurting CPU performance too much(even all decals use different materials).
+
 Also this shader moved all matrix mul() inside the fragment shader to vertex shader, so you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
 
 How to optimize?
