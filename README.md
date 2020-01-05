@@ -42,11 +42,11 @@ How to use this shader in my project?
 3. create a new unity default cube GameObject in scene (in Hierarchy window, click +/3D Object/Cube)
 4. apply that material to Cube Gameobject's MeshRenderer component's material slot
 5. edit the GameObject's transform so the local forward vector (blue Z arrow) is pointing to scene objects, and the cube is intersecting scene objects
-6. you should now see decal is rendering correctly(projecting to scene objects correctly)
-7. (optional)edit blend mode / color, according to your needs
+6. you should now see your new decal cube is rendering correctly(projecting alpha blending texture to scene objects correctly)
+7. (optional)edit _Color / BlendingOption, according to your needs
 8. (optional)finally make the cube as thin/small as possible to improve GPU rendering performance
 
-I created the material already, but which BlendMode should I use in the material inspector?
+I can see decal renders correctly, but which BlendMode should I use in the material inspector?
 -------------------
 Blend SrcAlpha OneMinusSrcAlpha // Traditional transparency
 Blend One OneMinusSrcAlpha // Premultiplied transparency
@@ -65,17 +65,22 @@ Requirement when using this shader
 [the camera depth texture]:
 https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html
 
-- atleast OpenGLES3.0 (#pragma target 3.0 due to ddx() & ddy())
+- For mobile, you need atleast OpenGLES3.0 (#pragma target 3.0 due to ddx() & ddy())
 
 Is this shader optimized for mobile?
 -------------------
-This screen space decal shader is SRP batcher compatible, so you can put lots of decals in scene without hurting CPU performance too much(even all decals use different material).
+This screen space decal shader is SRP batcher compatible, so you can put lots of decals in scene without hurting CPU performance too much. (even all decals use different materials)
 Also this shader moved all matrix mul() inside the fragment shader to vertex shader, so you can put lots of decals in scene without hurting GPU performance too much, as long as they are thin, small and don't overlap(overdraw).
+
+How to optimize?
+-------------------
+-make all decal cube as thin/small as possible
+-don't overlap decals
+-Set ZTest to LessEqual, and Cull to Back, if your camera never goes into decal's cube volume, this will improve GPU performance a lot!
 
 Editor System Requirements
 -------------------
 - Unity 2019.1 or later (due to "shader_feature_local"). But you can replace to "shader_feature" if you want to use this shader in older unity versions
-
 
 Implementation Reference
 -------------------
