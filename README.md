@@ -22,8 +22,8 @@ After adding decal:
 (alpha blending)
 ![screenshot](https://imgur.com/xIjdKvW.png)
 (opaque)
-![screenshot](https://imgur.com/WE6AqYP.png)
 ![screenshot](https://imgur.com/c3fInsS.png)
+![screenshot](https://imgur.com/WE6AqYP.png)
 ![screenshot](https://imgur.com/lGE6qr3.png)
 ![screenshot](https://imgur.com/5LwT7Xe.png)
 
