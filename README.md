@@ -49,11 +49,17 @@ How to use this shader in my project?
 I can see decal renders correctly, but which BlendMode should I use in the material inspector?
 -------------------
 Blend SrcAlpha OneMinusSrcAlpha // Traditional transparency
+
 Blend One OneMinusSrcAlpha // Premultiplied transparency
+
 Blend One One // Additive
+
 Blend OneMinusDstColor One // Soft Additive
+
 Blend DstColor Zero // Multiplicative
+
 Blend DstColor SrcColor // 2x Multiplicative
+
 https://docs.unity3d.com/Manual/SL-Blend.html
 
 Requirement when using this shader
