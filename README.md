@@ -35,7 +35,7 @@ After adding decal:
 (add 4x4 tiling)
 ![screenshot](https://i.imgur.com/ux8aYKO.png)
 (add 4x4 tiling , alpha * 2 - 1)
-![screenshot](https://i.imgur.com/k4ily3Y.png)
+![screenshot](https://i.imgur.com/PlXZSf8.png)
 (add 4x4 tiling , alpha * 4 - 3)
 ![screenshot](https://i.imgur.com/wmaM748.png)
 (add 4x4 tiling , alpha * 10 - 9)
