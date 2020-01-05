@@ -6,7 +6,7 @@ Before adding decal
 After adding decal(multiply blend mode)
 ![screenshot](https://i.imgur.com/ptjzwPK.png)
 
-each decal is just a unity cube GameObject, using material of this shader, nothing else.
+Each decal is just a unity cube GameObject, using material of this shader, nothing else.
 ![screenshot](https://i.imgur.com/m4F0N5t.png)
 
 Before adding decal
