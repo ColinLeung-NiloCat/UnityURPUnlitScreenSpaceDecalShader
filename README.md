@@ -1,7 +1,7 @@
 Unity URP Unlit ScreenSpaceDecal Shader(SRP batcher compatible)
 ======================
 
-example of multiply blending decals (close up)
+example of multiply blend mode decals (close up)
 ![screenshot](https://i.imgur.com/ptjzwPK.png)
 ![screenshot](https://i.imgur.com/m4F0N5t.png)
 ![screenshot](https://i.imgur.com/dyFj5h1.png)
