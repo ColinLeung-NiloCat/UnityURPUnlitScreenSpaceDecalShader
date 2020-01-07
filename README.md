@@ -97,6 +97,9 @@ I need LOTs of decals in my game, is there performance best practice?
 - make all decal cube as thin/small as possible
 - don't overlap decals(overdraw)
 - Set ZTest to LessEqual, and Cull to Back in the material inspector, if your camera never goes into decal's cube volume, doing this will improve GPU performance a lot! (due to effective early-Z, GPU only need to render visible decals)
+- disable _ProjectionAngleDiscardEnable, doing this will improve GPU performance a lot!
+
+if you do every optimzations listed above, and your game is still slow due to this decal shader, please send me an issue, I will treat it as bug.
 
 Editor System Requirements
 -------------------
