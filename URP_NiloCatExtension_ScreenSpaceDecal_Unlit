@@ -170,9 +170,8 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
 
 #if _ProjectionAngleDiscardEnable
                 // also discard "scene normal not facing decal projector direction" pixels
-                float3 normalized_ddx = normalize(ddx(decalSpaceScenePos));
-                float3 normalized_ddy = normalize(ddy(decalSpaceScenePos));
-                float3 decalSpaceHardNormal = cross(normalized_ddx, normalized_ddy);//reconstruct scene hard normal using scene pos ddx&ddy
+                float3 decalSpaceHardNormal = normalize(cross(ddx(decalSpaceScenePos), ddy(decalSpaceScenePos)));//reconstruct scene hard normal using scene pos ddx&ddy
+
                 mask *= decalSpaceHardNormal.z > _ProjectionAngleDiscardThreshold;//compare scene hard normal with decal projector's dir, decalSpaceHardNormal.z equals dot(decalForwardDir,sceneHardNormalDir)
 #endif
                 //call discard
