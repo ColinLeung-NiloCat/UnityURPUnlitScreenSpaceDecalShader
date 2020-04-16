@@ -170,13 +170,15 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
                 //discard logic
                 //===================================================
                 // discard "out of cube volume" pixels
-                float mask = (abs(decalSpaceScenePos.x) < 0.5) * (abs(decalSpaceScenePos.y) < 0.5) * (abs(decalSpaceScenePos.z) < 0.5);
+                //2020-4-17: tried fix clip() bug by removing all possible bool
+                //https://github.com/ColinLeung-NiloCat/UnityURPUnlitScreenSpaceDecalShader/issues/6#issuecomment-614633460            
+                float mask = (abs(decalSpaceScenePos.x) < 0.5 ? 1.0 : 0.0) * (abs(decalSpaceScenePos.y) < 0.5 ? 1.0 : 0.0) * (abs(decalSpaceScenePos.z) < 0.5 ? 1.0 : 0.0);
 
 #if _ProjectionAngleDiscardEnable
                 // also discard "scene normal not facing decal projector direction" pixels
                 float3 decalSpaceHardNormal = normalize(cross(ddx(decalSpaceScenePos), ddy(decalSpaceScenePos)));//reconstruct scene hard normal using scene pos ddx&ddy
 
-                mask *= decalSpaceHardNormal.z > _ProjectionAngleDiscardThreshold;//compare scene hard normal with decal projector's dir, decalSpaceHardNormal.z equals dot(decalForwardDir,sceneHardNormalDir)
+                mask *= decalSpaceHardNormal.z > _ProjectionAngleDiscardThreshold ? 1.0 : 0.0;//compare scene hard normal with decal projector's dir, decalSpaceHardNormal.z equals dot(decalForwardDir,sceneHardNormalDir)
 #endif
                 //call discard
                 clip(mask - 0.5);//if ZWrite is off, clip() is fast enough on mobile, because it won't write the DepthBuffer, so no pipeline stall(confirmed by ARM staff).
