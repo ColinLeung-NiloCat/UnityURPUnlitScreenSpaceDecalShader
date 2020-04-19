@@ -49,7 +49,15 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
 
     SubShader
     {
-        Tags { "RenderType" = "Overlay" "Queue" = "AlphaTest+1" }
+        //To avoid render order problems, Queue must >= 2501, which enters the transparent queue, in transparent queue Unity will always draw from back to front
+        //https://github.com/ColinLeung-NiloCat/UnityURPUnlitScreenSpaceDecalShader/issues/6#issuecomment-615940985
+        /*
+        //https://docs.unity3d.com/Manual/SL-SubShaderTags.html
+        Queues up to 2500 (“Geometry+500”) are consided “opaque” and optimize the drawing order of the objects for best performance. 
+        Higher rendering queues are considered for “transparent objects” and sort objects by distance, starting rendering from the furthest ones and ending with the closest ones. 
+        Skyboxes are drawn in between all opaque and all transparent objects.
+        */
+        Tags { "RenderType" = "Overlay" "Queue" = "Transparent-499" }
 
         Pass
         {
