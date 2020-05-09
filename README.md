@@ -81,7 +81,7 @@ https://docs.unity3d.com/Manual/SL-Blend.html
 
 Requirement when using this shader
 -------------------
-- Forward rendering (only tested on URP, it may work in built-in RP)
+- Forward rendering in URP
 - Perspective camera
 - _CameraDepthTexture is already rendering by unity (toggle on DepthTexture in your Universal Render Pipeline Asset)
 - For mobile, you need at least OpenGLES3.0 (#pragma target 3.0 due to ddx() & ddy())
