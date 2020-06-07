@@ -53,15 +53,27 @@ if you need to render bullet holes, dirt/logo on wall, 3D projected UI, explosio
 
 How to use this shader in my project?
 -------------------
-0. clone the shader to your project
-1. create a new material using that shader
-2. assign any texture to material's Texture slot
-3. create a new unity default cube GameObject in scene (in Hierarchy window, click +/3D Object/Cube)
-4. apply that material to Cube Gameobject's MeshRenderer component's material slot
-5. edit the GameObject's transform so the local forward vector (blue Z arrow) is pointing to scene objects, and the cube is intersecting scene objects
-6. you should now see your new decal cube is rendering correctly(projecting alpha blending texture to scene objects correctly)
-7. (optional)edit _Color / BlendingOption, according to your needs
-8. (optional)finally make the cube as thin/small as possible to improve GPU rendering performance
+0. First, you must enable depth texture in URP's setting
+1. then clone the shader to your project
+2. create a new material using that shader
+3. assign any texture to material's Texture slot
+4. create a new unity default cube GameObject in scene (in Hierarchy window, click +/3D Object/Cube)
+5. apply that material to Cube Gameobject's MeshRenderer component's material slot
+6. edit the GameObject's transform so the local forward vector (blue Z arrow) is pointing to scene objects, and the cube is intersecting scene objects
+7. you should now see your new decal cube is rendering correctly(projecting alpha blending texture to scene objects correctly)
+8. (optional)edit _Color / BlendingOption, according to your needs
+9. (optional)finally make the cube as thin/small as possible to improve GPU rendering performance
+
+Requirement when using this shader
+-------------------
+- Forward rendering in URP
+- Perspective camera
+- _CameraDepthTexture is already rendering by unity (toggle on DepthTexture in your Universal Render Pipeline Asset)
+- For mobile, you need at least OpenGLES3.0 (#pragma target 3.0 due to ddx() & ddy())
+
+Editor System Requirements
+-------------------
+- Unity 2019.1 or later (due to "shader_feature_local"). But you can replace to "shader_feature" if you want to use this shader in older unity versions
 
 I can see decal renders correctly, but which BlendMode should I use in the material inspector?
 -------------------
@@ -79,13 +91,6 @@ Blend DstColor SrcColor // 2x Multiplicative
 
 https://docs.unity3d.com/Manual/SL-Blend.html
 
-Requirement when using this shader
--------------------
-- Forward rendering in URP
-- Perspective camera
-- _CameraDepthTexture is already rendering by unity (toggle on DepthTexture in your Universal Render Pipeline Asset)
-- For mobile, you need at least OpenGLES3.0 (#pragma target 3.0 due to ddx() & ddy())
-
 Is this shader optimized for mobile?
 -------------------
 This screen space decal shader is SRP batcher compatible, so you can put lots of decals in scene without hurting CPU performance too much(even all decals use different materials).
@@ -101,10 +106,6 @@ I need LOTs of decals in my game, is there performance best practice?
 - enable "generate mipmap" for your decal texture, else a high resolution decal texture will make your game slow due to cache miss in GPU memory
 
 if you do every optimzations listed above, and your game is still slow due to this decal shader, please send me an issue, I will treat it as bug.
-
-Editor System Requirements
--------------------
-- Unity 2019.1 or later (due to "shader_feature_local"). But you can replace to "shader_feature" if you want to use this shader in older unity versions
 
 Implementation Reference
 -------------------
