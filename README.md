@@ -53,7 +53,7 @@ if you need to render bullet holes, dirt/logo on wall, 3D projected UI, explosio
 
 How to use this shader in my project?
 -------------------
-0. First, you must enable depth texture in URP's setting
+0. First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)
 1. then clone the shader to your project
 2. create a new material using that shader
 3. assign any texture to material's Texture slot
