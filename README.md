@@ -53,7 +53,11 @@ if you need to render bullet holes, dirt/logo on wall, 3D projected UI, explosio
 
 How to use this shader in my project?
 -------------------
-0. First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)
+**0. First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
+**0. First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
+**0. First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
+**0. First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
+**0. First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
 1. then clone the shader to your project
 2. create a new material using that shader
 3. assign any texture to material's Texture slot
@@ -74,6 +78,10 @@ Requirement when using this shader
 Editor System Requirements
 -------------------
 - Unity 2019.1 or later (due to "shader_feature_local"). But you can replace to "shader_feature" if you want to use this shader in older unity versions
+
+I can see decal in scene window, but not in game window
+-------------------
+**you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
 
 I can see decal renders correctly, but which BlendMode should I use in the material inspector?
 -------------------
