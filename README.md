@@ -59,6 +59,7 @@ How to use this shader in my project?
 1. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
 1. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
 1. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
+![screenshot](https://i.imgur.com/3huI5E9.png)
 2. create a new material using that shader
 3. assign any texture to material's Texture slot
 4. create a new unity default cube GameObject in scene (in Hierarchy window, click +/3D Object/Cube)
