@@ -53,12 +53,12 @@ if you need to render bullet holes, dirt/logo on wall, 3D projected UI, explosio
 
 How to use this shader in my project?
 -------------------
-0. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
-0. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
-0. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
-0. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
-0. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
-1. then clone the shader to your project
+0. clone the shader to your project
+1. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
+1. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
+1. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
+1. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
+1. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
 2. create a new material using that shader
 3. assign any texture to material's Texture slot
 4. create a new unity default cube GameObject in scene (in Hierarchy window, click +/3D Object/Cube)
