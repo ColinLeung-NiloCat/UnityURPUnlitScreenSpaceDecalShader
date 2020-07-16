@@ -57,7 +57,7 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
         Higher rendering queues are considered for “transparent objects” and sort objects by distance, starting rendering from the furthest ones and ending with the closest ones. 
         Skyboxes are drawn in between all opaque and all transparent objects.
         */
-        Tags { "RenderType" = "Overlay" "Queue" = "Transparent-499" }
+        Tags { "RenderType" = "Overlay" "Queue" = "Transparent-499" "DisableBatching" = "True" }
 
         Pass
         {
