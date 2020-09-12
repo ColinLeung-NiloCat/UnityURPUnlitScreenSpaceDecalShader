@@ -83,6 +83,7 @@ Editor System Requirements
 I can see decal in scene window, but not in game window
 -------------------
 **you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
+If it still doesn't work, try adding an empty renderer feature.
 
 I can see decal renders correctly, but which BlendMode should I use in the material inspector?
 -------------------
