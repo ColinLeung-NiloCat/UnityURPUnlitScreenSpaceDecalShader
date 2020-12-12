@@ -60,10 +60,10 @@ How to use this shader in my project?
 1. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
 1. **First, you must enable depth texture in URP's setting (search UniversalRP-HighQuality in your project)**
 ![screenshot](https://i.imgur.com/3huI5E9.png)
-2. create a new material using that shader
+2. create a new material using that shader (right click on the shader->Create->Material)
 3. assign any texture to material's Texture slot
 4. create a new unity default cube GameObject in scene (in Hierarchy window, click +/3D Object/Cube)
-5. apply that material to Cube Gameobject's MeshRenderer component's material slot
+5. apply that material to Cube Gameobject's MeshRenderer component's material slot (drag material on the cube)
 6. edit the GameObject's transform so the local forward vector (blue Z arrow) is pointing to scene objects, and the cube is intersecting scene objects
 7. you should now see your new decal cube is rendering correctly(projecting alpha blending texture to scene objects correctly)
 8. (optional)edit _Color / BlendingOption, according to your needs
@@ -87,7 +87,7 @@ If it still doesn't work, try adding an empty renderer feature.
 
 I can see decal in editor(both scene and game window), but not in mobile build
 -------------------
-search "UniversalRP-MediumQuality" amd "UniversalRP-LowQuality" in your project, turn on depth texture.
+search "UniversalRP-MediumQuality" and "UniversalRP-LowQuality" in your project, turn on depth texture.
 ![screenshot](https://i.imgur.com/BN7962k.png)
 
 I can see decal renders correctly, but which BlendMode should I use in the material inspector?
