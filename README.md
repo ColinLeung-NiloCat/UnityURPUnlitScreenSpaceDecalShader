@@ -72,7 +72,6 @@ How to use this shader in my project?
 Requirement when using this shader
 -------------------
 - Forward rendering in URP
-- Perspective camera
 - _CameraDepthTexture is already rendering by unity (toggle on DepthTexture in your Universal Render Pipeline Asset)
 - For mobile, you need at least OpenGLES3.0 (#pragma target 3.0 due to ddx() & ddy())
 
@@ -89,6 +88,10 @@ I can see decal in editor(both scene and game window), but not in mobile build
 -------------------
 search "UniversalRP-MediumQuality" and "UniversalRP-LowQuality" in your project, turn on depth texture.
 ![screenshot](https://i.imgur.com/BN7962k.png)
+
+My Game use orthographic camera, but the decal shader doesn't work 
+-------------------
+enable toggle "_SupportOrthographicCamera" in material
 
 I can see decal renders correctly, but which BlendMode should I use in the material inspector?
 -------------------
