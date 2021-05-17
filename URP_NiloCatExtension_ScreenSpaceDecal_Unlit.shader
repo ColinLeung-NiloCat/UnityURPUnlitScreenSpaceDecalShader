@@ -201,19 +201,15 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
                     float sceneDepthVS = lerp(_ProjectionParams.y, _ProjectionParams.z, sceneRawDepth);
 
                     //***Used a few lines from Asset: Lux URP Essentials by forst***
+                    // Edit: The copied Lux URP stopped working at some point, and no one even knew why it worked in the first place 
                     //----------------------------------------------------------------------------
-                    // reconstruct posVSOrtho
-                    float2 viewRayEndPosVS_xy = float2(unity_OrthoParams.xy * (i.screenPos.xy * 2 - 1));
-                    float3 posVSOrtho = float3(-viewRayEndPosVS_xy, -sceneDepthVS);
-
-                    // convert posVSOrtho to posWS
-                    float3 posWS = mul(unity_CameraToWorld, float4(posVSOrtho,1)).xyz;
-                    posWS -= _WorldSpaceCameraPos * 2; // Don't understand this, Why * 2?
-                    posWS *= -1;
+				    float2 viewRayEndPosVS_xy = float2(unity_OrthoParams.xy * (i.screenPos.xy - 0.5) * 2 /* to clip space */);  // Ortho near/far plane xy pos 
+				    float4 vposOrtho = float4(viewRayEndPosVS_xy, -sceneDepthVS, 1);                                            // Constructing a view space pos
+				    float3 wposOrtho = mul(unity_CameraToWorld, vposOrtho).xyz;                                                 // Trans. view space to world space
                     //----------------------------------------------------------------------------
 
                     // transform world to object space(decal space)
-                    decalSpaceScenePos = mul(UNITY_MATRIX_I_M, float4(posWS, 1)).xyz;
+                    decalSpaceScenePos = mul(GetWorldToObjectMatrix(), float4(wposOrtho, 1)).xyz;
                 }
                 else
                 {
