@@ -205,7 +205,7 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
                     //----------------------------------------------------------------------------
 				    float2 viewRayEndPosVS_xy = float2(unity_OrthoParams.xy * (i.screenPos.xy - 0.5) * 2 /* to clip space */);  // Ortho near/far plane xy pos 
 				    float4 vposOrtho = float4(viewRayEndPosVS_xy, -sceneDepthVS, 1);                                            // Constructing a view space pos
-				    float3 wposOrtho = mul(unity_CameraToWorld, vposOrtho).xyz;                                                 // Trans. view space to world space
+				    float3 wposOrtho = mul(UNITY_MATRIX_I_V, vposOrtho).xyz;                                                 // Trans. view space to world space
                     //----------------------------------------------------------------------------
 
                     // transform world to object space(decal space)
