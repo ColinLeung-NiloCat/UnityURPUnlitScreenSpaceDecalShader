@@ -6,13 +6,13 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
     Properties
     {
         [Header(Basic)]
-        _MainTex("Texture", 2D) = "white" {}
-        [HDR]_Color("_Color (default = 1,1,1,1)", color) = (1,1,1,1)
+        [MainTexture]_MainTex("Texture", 2D) = "white" {}
+        [MainColor][HDR]_Color("_Color (default = 1,1,1,1)", Color) = (1,1,1,1)
 
         [Header(Blending)]
         // https://docs.unity3d.com/ScriptReference/Rendering.BlendMode.html
-        [Enum(UnityEngine.Rendering.BlendMode)]_SrcBlend("_SrcBlend (default = SrcAlpha)", Float) = 5 // 5 = SrcAlpha
-        [Enum(UnityEngine.Rendering.BlendMode)]_DstBlend("_DstBlend (default = OneMinusSrcAlpha)", Float) = 10 // 10 = OneMinusSrcAlpha
+        [Enum(UnityEngine.Rendering.BlendMode)]_DecalSrcBlend("_DecalSrcBlend (default = SrcAlpha)", Int) = 5 // 5 = SrcAlpha
+        [Enum(UnityEngine.Rendering.BlendMode)]_DecalDstBlend("_DecalDstBlend (default = OneMinusSrcAlpha)", Int) = 10 // 10 = OneMinusSrcAlpha
 
         [Header(Alpha remap(extra alpha control))]
         _AlphaRemap("_AlphaRemap (default = 1,0,0,0) _____alpha will first mul x, then add y    (zw unused)", vector) = (1,0,0,0)
@@ -61,7 +61,9 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
         // Higher rendering queues are considered for “transparent objects” and sort objects by distance, 
         // starting rendering from the furthest ones and ending with the closest ones. 
         // Skyboxes are drawn in between all opaque and all transparent objects.
-        // "Queue" = "Transparent-499" mean "Queue" = "2501", which is almost equals "draw right before any transparent objects"
+        // "Queue" = "Transparent-499" means "Queue" = "2501", which is almost equals "draw right before any transparent objects"
+
+        // "DisableBatching" means disable "dynamic batching", not "srp batching"
         Tags { "RenderType" = "Overlay" "Queue" = "Transparent-499" "DisableBatching" = "True" }
 
         Pass
@@ -76,7 +78,7 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
             ZTest[_ZTest]
 
             ZWrite off
-            Blend[_SrcBlend][_DstBlend]
+            Blend[_DecalSrcBlend][_DecalDstBlend]
 
             HLSLPROGRAM
 
@@ -171,6 +173,16 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
                 return o;
             }
 
+            // copied from URP12.1.2's ShaderVariablesFunctions.hlsl
+            float LinearDepthToEyeDepth(float rawDepth)
+            {
+                #if UNITY_REVERSED_Z
+                    return _ProjectionParams.z - (_ProjectionParams.z - _ProjectionParams.y) * rawDepth;
+                #else
+                    return _ProjectionParams.y + (_ProjectionParams.z - _ProjectionParams.y) * rawDepth;
+                #endif
+            }
+
             half4 frag(v2f i) : SV_Target
             {
                 // [important note]
@@ -190,15 +202,7 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
                 // (should we use UNITY_BRANCH here?) decided NO because https://forum.unity.com/threads/correct-use-of-unity_branch.476804/
                 if(unity_OrthoParams.w)
                 {
-                    // if orthographic camera, _CameraDepthTexture store scene depth linearly within [0,1]
-                    // if platform use reverse depth, make sure to 1-depth also
-                    // https://docs.unity3d.com/Manual/SL-PlatformDifferences.html
-                    #if defined(UNITY_REVERSED_Z)
-                    sceneRawDepth = 1-sceneRawDepth;
-                    #endif
-
-                    // simply lerp(near,far, [0,1] linear depth) to get view space depth                  
-                    float sceneDepthVS = lerp(_ProjectionParams.y, _ProjectionParams.z, sceneRawDepth);
+                    float sceneDepthVS = LinearDepthToEyeDepth(sceneRawDepth);
 
                     //***Used a few lines from Asset: Lux URP Essentials by forst***
                     // Edit: The copied Lux URP stopped working at some point, and no one even knew why it worked in the first place 
