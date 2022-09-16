@@ -77,7 +77,7 @@ Requirement when using this shader
 
 Editor System Requirements
 -------------------
-- Unity 2019.1 or later (due to "shader_feature_local"). But you can replace to "shader_feature" if you want to use this shader in older unity versions
+- Unity 2020.3LTS or 2021.3LTS
 
 I can see decal in scene window, but not in game window
 -------------------
