@@ -174,6 +174,7 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
             }
 
             // copied from URP12.1.2's ShaderVariablesFunctions.hlsl
+            #if SHADER_LIBRARY_VERSION_MAJOR < 12
             float LinearDepthToEyeDepth(float rawDepth)
             {
                 #if UNITY_REVERSED_Z
@@ -182,6 +183,7 @@ Shader "Universal Render Pipeline/NiloCat Extension/Screen Space Decal/Unlit"
                     return _ProjectionParams.y + (_ProjectionParams.z - _ProjectionParams.y) * rawDepth;
                 #endif
             }
+            #endif
 
             half4 frag(v2f i) : SV_Target
             {
